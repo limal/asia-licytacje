@@ -8,7 +8,7 @@ export const App = () => {
   return (
     <div className="App">
       <Importer setData={setData} />
-      <OutputList data={data} />
+      <OutputList inputData={data} />
     </div>
   );
 };
