@@ -7,11 +7,11 @@ networks:
     external: false
 
 services:
-  parcel-test:
-    image: docker.beetlock.com/parcel-test
+  asia-licytacje:
+    image: docker.beetlock.com/asia-licytacje
     labels:
-      - traefik.backend=parcel-test
-      - traefik.frontend.rule=Host:beetlock.com
+      - traefik.backend=asia-licytacje
+      - traefik.frontend.rule=Host:licytacje.wolnik.co
       - traefik.docker.network=web
       - traefik.port=80
     networks:

@@ -1,6 +1,6 @@
 import React from "react";
 
-const OutputList = ({ inputData = null }) => {
+const OutputList = ({ inputData = null, showWinners }) => {
   console.log(data);
   const data = Array.from(inputData);
 
@@ -37,6 +37,8 @@ const OutputList = ({ inputData = null }) => {
 
   groups["__NO_CATEGORY"] = data.filter(item => !item.isSeen);
 
+  const Author = ({ name }) => (name !== "-" ? name : null);
+
   const Category = ({ items, title }) => {
     if (items.length === 0) {
       return null;
@@ -46,9 +48,23 @@ const OutputList = ({ inputData = null }) => {
       <>
         <h3>{title}</h3>
         <ul>
-          {items.map(item => (
-            <li>{item.title}</li>
-          ))}
+          {items
+            .filter(item =>
+              showWinners ? item.winner !== "-" : item.winner.length < 2
+            )
+            .map(item => (
+              <li>
+                {item.title} od <Author name={item.author} />
+                &nbsp;
+                {showWinners ? (
+                  <span>
+                    wygrał(a) <Author name={item.winner} /> ({item.price})
+                  </span>
+                ) : (
+                  <a href={item.url}>{item.url}</a>
+                )}
+              </li>
+            ))}
         </ul>
       </>
     );
@@ -57,7 +73,8 @@ const OutputList = ({ inputData = null }) => {
   console.log(Object.getOwnPropertyNames(groups));
 
   return (
-    <div className="OutputList">
+    <div className="output-list">
+      {showWinners && <h4>Zwycięzcy aukcji</h4>}{" "}
       {Object.getOwnPropertyNames(groups).map(category => (
         <Category items={groups[category]} key={category} title={category} />
       ))}

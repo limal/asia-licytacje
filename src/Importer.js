@@ -1,7 +1,7 @@
 import React from "react";
 import useForm from "react-hook-form";
 
-const Importer = ({ setData }) => {
+const Importer = ({ setData, setShowWinners }) => {
   const { handleSubmit, register, errors } = useForm({
     mode: "onChange"
   });
@@ -10,6 +10,7 @@ const Importer = ({ setData }) => {
       "category",
       "title",
       "author",
+      "authorUrl",
       "url",
       "fromDate",
       "toDate",
@@ -29,11 +30,14 @@ const Importer = ({ setData }) => {
     });
 
     setData(data);
+    setShowWinners(values.showWinners);
+
+    console.log(values.showWinners);
   };
 
   return (
     <div className="importer">
-      Importer
+      <h3 className="importer__header">Wklej dane z arkusza poniżej:</h3>
       <form className="importer__form" onSubmit={handleSubmit(onSubmit)}>
         <textarea
           className="importer__textarea"
@@ -44,8 +48,18 @@ const Importer = ({ setData }) => {
         ></textarea>
         {errors.email && errors.email.message}
 
+        <label className="importer__checkbox" htmlFor="showWinners">
+          <input
+            id="showWinners"
+            type="checkbox"
+            name="showWinners"
+            ref={register({ required: false })}
+          />
+          Wygrane aukcje
+        </label>
+
         <button type="submit" className="importer__button">
-          Submit
+          Wyślij
         </button>
       </form>
     </div>
