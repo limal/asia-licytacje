@@ -6,6 +6,7 @@ const Importer = ({ setData, setShowWinners }) => {
     mode: "onChange"
   });
   const onSubmit = values => {
+    // Format
     const ROW_FORMAT = [
       "category",
       "title",
