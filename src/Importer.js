@@ -10,7 +10,6 @@ const Importer = ({ setData, setShowWinners }) => {
       "category",
       "title",
       "author",
-      "authorUrl",
       "url",
       "fromDate",
       "toDate",
