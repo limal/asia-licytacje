@@ -37,10 +37,30 @@ const OutputList = ({ inputData = null }) => {
 
   groups["__NO_CATEGORY"] = data.filter(item => !item.isSeen);
 
+  const Category = ({ items, title }) => {
+    if (items.length === 0) {
+      return null;
+    }
+
+    return (
+      <>
+        <h3>{title}</h3>
+        <ul>
+          {items.map(item => (
+            <li>{item.title}</li>
+          ))}
+        </ul>
+      </>
+    );
+  };
+
+  console.log(Object.getOwnPropertyNames(groups));
+
   return (
     <div className="OutputList">
-      OutputList
-      <pre>{JSON.stringify(groups, null, 2)}</pre>
+      {Object.getOwnPropertyNames(groups).map(category => (
+        <Category items={groups[category]} key={category} title={category} />
+      ))}
     </div>
   );
 };

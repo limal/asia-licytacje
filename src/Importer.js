@@ -8,7 +8,7 @@ const Importer = ({ setData }) => {
   const onSubmit = values => {
     const ROW_FORMAT = [
       "category",
-      "what",
+      "title",
       "author",
       "url",
       "fromDate",
