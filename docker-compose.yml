@@ -1,0 +1,19 @@
+version: "3"
+
+networks:
+  web:
+    external: true
+  internal:
+    external: false
+
+services:
+  parcel-test:
+    image: docker.beetlock.com/parcel-test
+    labels:
+      - traefik.backend=parcel-test
+      - traefik.frontend.rule=Host:beetlock.com
+      - traefik.docker.network=web
+      - traefik.port=80
+    networks:
+      - internal
+      - web

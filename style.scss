@@ -1,0 +1,28 @@
+body {
+  background: #3a2a81;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  height: 100vh;
+  padding: 20px;
+}
+
+.importer {
+  flex: 1;
+
+  &__textarea {
+    width: 80%;
+    min-height: 300px;
+  }
+}
+
+.OutputList {
+  background: #5a5aa1;
+  flex: 1;
+}
