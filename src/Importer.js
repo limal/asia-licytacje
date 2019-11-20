@@ -6,11 +6,27 @@ const Importer = ({ setData }) => {
     mode: "onChange"
   });
   const onSubmit = values => {
-    console.log(values);
+    const ROW_FORMAT = [
+      "category",
+      "what",
+      "author",
+      "url",
+      "fromDate",
+      "toDate",
+      "winner",
+      "isInTopic",
+      "price",
+      "isPaid"
+    ];
 
     const rows = values.data.split("\n");
+    const data = rows.map(row => {
+      const cells = row.split("\t").reduce((acc, cur, index) => {
+        return (acc = { ...acc, ...{ [ROW_FORMAT[index]]: cur } });
+      }, {});
 
-    const data = rows.map(row => row.split("\t"));
+      return cells;
+    });
 
     setData(data);
   };
@@ -18,7 +34,7 @@ const Importer = ({ setData }) => {
   return (
     <div className="importer">
       Importer
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="importer__form" onSubmit={handleSubmit(onSubmit)}>
         <textarea
           className="importer__textarea"
           name="data"
@@ -28,7 +44,9 @@ const Importer = ({ setData }) => {
         ></textarea>
         {errors.email && errors.email.message}
 
-        <button type="submit">Submit</button>
+        <button type="submit" className="importer__button">
+          Submit
+        </button>
       </form>
     </div>
   );

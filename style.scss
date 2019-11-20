@@ -1,6 +1,6 @@
 body {
-  background: #3a2a81;
-  color: #fff;
+  background: #167549;
+  color: #fefbda;
   font-family: sans-serif;
 }
 
@@ -15,14 +15,31 @@ body {
 
 .importer {
   flex: 1;
+  width: 50%;
+  margin-right: 20px;
 
   &__textarea {
-    width: 80%;
     min-height: 300px;
   }
 }
 
+.importer__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.importer__button {
+  background: #fefbda;
+  color: #333;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+  border: 0;
+}
+
 .OutputList {
+  width: 50%;
   background: #5a5aa1;
   flex: 1;
 }
