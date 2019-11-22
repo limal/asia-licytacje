@@ -35,23 +35,25 @@ body {
 
 .importer__button {
   background: #fefbda;
+  border: 0;
   color: #333;
-  padding: 20px;
+  cursor: pointer;
   font-size: 20px;
   font-weight: bold;
   margin: 20px 0;
-  border: 0;
+  padding: 20px;
 }
 
 .button {
   background: #fefbda;
-  display: inline-block;
+  border: 0;
   color: #333;
-  padding: 20px;
+  cursor: pointer;
+  display: inline-block;
   font-size: 20px;
   font-weight: bold;
   margin: 20px 0;
-  border: 0;
+  padding: 20px;
   text-decoration: none;
 }
 
@@ -77,4 +79,18 @@ body {
 .version {
   font-size: 8px;
   opacity: 0.5;
+}
+
+.only-winners {
+  background: #167549;
+  color: #fff;
+  display: inline-block;
+  margin-top: 0;
+  padding: 8px 16px;
+}
+
+.item {
+  &__title {
+    margin-top: 0;
+  }
 }

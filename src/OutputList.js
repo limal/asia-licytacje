@@ -48,7 +48,7 @@ const OutputList = ({ inputData = null, showWinners }) => {
 
     return (
       <>
-        <h3>{title}</h3>
+        <h3 className="item__title">{title}</h3>
         <ul>
           {items
             .filter(item =>
@@ -76,7 +76,7 @@ const OutputList = ({ inputData = null, showWinners }) => {
 
   return (
     <div className="output-list">
-      {showWinners && <h4>Zwycięzcy aukcji</h4>}{" "}
+      {showWinners && <h4 className="only-winners">Zwycięzcy aukcji</h4>}{" "}
       {Object.getOwnPropertyNames(groups).map(category => (
         <Category items={groups[category]} key={category} title={category} />
       ))}
