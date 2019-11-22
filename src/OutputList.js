@@ -37,10 +37,12 @@ const OutputList = ({ inputData = null, showWinners }) => {
 
   groups["__NO_CATEGORY"] = data.filter(item => !item.isSeen);
 
-  const Author = ({ name }) => (name !== "-" ? name : null);
+  const Author = ({ name }) => (name !== "-" ? `${name}` : null);
 
   const Category = ({ items, title }) => {
-    if (items.length === 0) {
+    const isWinner = item => item.winner && item.winner.length > 2;
+
+    if (items.filter(item => showWinners ? isWinner(item) : !isWinner(item)).length === 0) {
       return null;
     }
 
@@ -50,7 +52,7 @@ const OutputList = ({ inputData = null, showWinners }) => {
         <ul>
           {items
             .filter(item =>
-              showWinners ? item.winner !== "-" : item.winner.length < 2
+              showWinners ? isWinner(item) : !isWinner(item)
             )
             .map(item => (
               <li>
@@ -61,8 +63,8 @@ const OutputList = ({ inputData = null, showWinners }) => {
                     wygrał(a) <Author name={item.winner} /> ({item.price})
                   </span>
                 ) : (
-                  <a href={item.url}>{item.url}</a>
-                )}
+                    <a href={item.url}>{item.url}</a>
+                  )}
               </li>
             ))}
         </ul>

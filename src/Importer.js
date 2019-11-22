@@ -1,10 +1,9 @@
 import React from "react";
 import useForm from "react-hook-form";
 
-const Importer = ({ setData, setShowWinners }) => {
-  const { handleSubmit, register, errors } = useForm({
-    mode: "onChange"
-  });
+const Importer = ({ data, setData, setShowWinners }) => {
+  const { handleSubmit, register, errors } = useForm({});
+
   const onSubmit = values => {
     // Format
     const ROW_FORMAT = [
@@ -17,7 +16,16 @@ const Importer = ({ setData, setShowWinners }) => {
       "winner",
       "isInTopic",
       "price",
-      "isPaid"
+      "isPaid",
+      "unused1",
+      "unused2",
+      "unused3",
+      "unused4",
+      "unused5",
+      "unused6",
+      "unused7",
+      "unused8",
+      "unused9"
     ];
 
     const rows = values.data.split("\n");
@@ -41,6 +49,7 @@ const Importer = ({ setData, setShowWinners }) => {
       <form className="importer__form" onSubmit={handleSubmit(onSubmit)}>
         <textarea
           className="importer__textarea"
+          onChange={handleSubmit(onSubmit)}
           name="data"
           ref={register({
             required: false
@@ -62,7 +71,7 @@ const Importer = ({ setData, setShowWinners }) => {
           Wyślij
         </button>
       </form>
-    </div>
+    </div >
   );
 };
 

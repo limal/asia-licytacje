@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Importer from "./Importer";
 import OutputList from "./OutputList";
+import ErrorBoundary from './ErrorBoundary';
 
 export const App = () => {
   const [data, setData] = useState({});
@@ -8,8 +9,10 @@ export const App = () => {
 
   return (
     <div className="App">
-      <Importer setData={setData} setShowWinners={setShowWinners} />
-      <OutputList inputData={data} showWinners={showWinners} />
+      <ErrorBoundary>
+        <Importer data={data} setData={setData} setShowWinners={setShowWinners} />
+        <OutputList inputData={data} showWinners={showWinners} />
+      </ErrorBoundary>
     </div>
   );
 };
