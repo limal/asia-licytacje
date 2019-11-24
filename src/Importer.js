@@ -40,6 +40,9 @@ const Importer = ({ data, setData, setShowWinners }) => {
     setData(data);
     setShowWinners(values.showWinners);
 
+    console.log('Parsed data:');
+    console.log(data);
+
     console.log(values.showWinners);
   };
 
@@ -71,7 +74,7 @@ const Importer = ({ data, setData, setShowWinners }) => {
           Wyślij
         </button>
       </form>
-      <h4 className="version">v1.0.2</h4>
+      <h4 className="version">v1.0.3</h4>
     </div >
   );
 };
