@@ -74,7 +74,7 @@ const Importer = ({ data, setData, setShowWinners }) => {
           Wyślij
         </button>
       </form>
-      <h4 className="version">v1.0.4.15</h4>
+      <h4 className="version">v1.0.4.16</h4>
     </div >
   );
 };
