@@ -1,8 +1,8 @@
 pipeline:
   build:
     image: plugins/docker
-    registry: docker.wolnik.co.uk
-    repo: docker.wolnik.co.uk/asia-licytacje
+    registry: docker.cloud1d.com
+    repo: docker.cloud1d.com/asia-licytacje
     username:
       from_secret: docker_username
     password:
@@ -13,7 +13,7 @@ pipeline:
       - latest
   ssh:
     image: appleboy/drone-ssh
-    host: beetlock.com
+    host: cloud1d.com
     username:
       from_secret: ssh_username
     password:
@@ -21,4 +21,4 @@ pipeline:
     port: 22
     command_timeout: 2m
     script:
-      - cd /home/lukasz/traefik/sites/ && ./update-all.sh
+      - cd ~/sites/ && ./update.sh
